@@ -15,14 +15,14 @@ class _IntroScreenState extends State<IntroScreen> {
       body: Container(
         height: double.maxFinite,
         width: double.maxFinite,
-        
+
         decoration: const BoxDecoration(
           gradient: LinearGradient(colors: [Color(0xFF4093ce),Color(0xFF92c8ef),],
           begin: Alignment.topCenter,end: Alignment.bottomCenter)
         ),
         child: Column(
           children: [
-            const SizedBox(height: 100,),
+            const SizedBox(height: 90,),
             Container(
               width: 320,
               height: 320,
@@ -33,7 +33,7 @@ class _IntroScreenState extends State<IntroScreen> {
                 image: const DecorationImage(image: AssetImage("lib/assets/intro.png"))
               ),
             ),
-            const SizedBox(height: 80,),
+            const SizedBox(height: 75,),
             const Text("Let's Enjoy A",style: TextStyle(
               color: Colors.white,fontSize: 40,
               fontWeight: FontWeight.bold
@@ -42,18 +42,18 @@ class _IntroScreenState extends State<IntroScreen> {
               color: Colors.white,fontSize: 39,
               fontWeight: FontWeight.bold
             ),),
-            const SizedBox(height: 80,),
+            const SizedBox(height: 75,),
             const Text("Search the safest destination",
             style: TextStyle(
               fontSize: 16,fontWeight: FontWeight.w600
             ),),
-            const SizedBox(height: 50,),
+            const SizedBox(height: 40,),
             GestureDetector(
               onTap: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => HomeScreen(),));
               },
               child: Container(
-                height: 55,
+                height: 60,
                 width: 320,
                 decoration: BoxDecoration(
                   color: const Color(0xFF2f7694),

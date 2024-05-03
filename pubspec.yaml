@@ -38,10 +38,19 @@ dependencies:
   search_page: ^2.3.0
   dropdown_search: ^5.0.6
   custom_clippers: ^2.0.0
+  flutter_animate: ^4.1.1+1
   flutter_custom_clippers: ^2.1.0
   omni_datetime_picker: ^1.1.0
-  easy_search_bar: ^2.5.0
   calender_picker: ^2.0.2
+  intl: ^0.18.1
+  easy_url_launcher: ^0.0.6
+  scroll_loop_auto_scroll: ^0.0.5
+  material_floating_search_bar_2: ^0.5.0
+  standard_searchbar: ^2.1.1
+  flutter_easy_search_bar: ^0.0.2
+  http: ^1.2.1
+  flutter_screenutil: ^5.9.3
+
 
 
 dev_dependencies:
@@ -69,6 +78,10 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - lib/assets/intro.png
+    - lib/assets/visit.jpg
+    - lib/assets/visit3.jpeg
+    - lib/assets/visit1.jpg
+    - lib/assets/visit2.jpg
     - lib/assets/dot.png
     - lib/assets/flight.png
     - lib/assets/home1.png

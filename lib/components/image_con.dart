@@ -10,19 +10,17 @@ class VisitArea extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: const EdgeInsets.only(top: 12.0),
+          padding: const EdgeInsets.only(top: 15.0),
           child: Container(
           height: 200,
           width: 110,
-
-          decoration: BoxDecoration(
-
-            borderRadius: BorderRadius.circular(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
             color: Colors.white,
           ),
           child: Column(
             children: [
-             Gap(horizontal: 0.10,),
+             Gap(horizontal: 0.2,),
               Image.asset( image ??"",scale: 0.9,),
               Padding(
                 padding: const EdgeInsets.only(left: 0,right: 50,top: 10),

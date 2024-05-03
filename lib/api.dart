@@ -1,91 +1,70 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart'as http;
+class MyApi extends StatefulWidget {
+  const MyApi({super.key});
 
-void main() {
-  runApp(const MyApp());
+  @override
+  State<MyApi> createState() => _MyApiState();
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class _MyApiState extends State<MyApi> {
   Map<String, dynamic> mapData = {};
-  List<Map<String, dynamic>> dummyData = [
-    {
-      "name": {
-        "common": "Moldova",
-        "official": "Republic of Moldova",
-        "nativeName": {
-          "ron": {"official": "Republica Moldova", "common": "Moldova"}
-        }
-      },
-      "flag": "🇲🇩",
-      "continents": ["Europe"],
-    },
-    {
-      "name": {
-        "common": "United States",
-        "official": "United States of America",
-        "nativeName": {
-          "eng": {
-            "official": "United States of America",
-            "common": "United States"
-          }
-        }
-      },
-      "flag": "🇺🇸",
-      "continents": ["North America"],
-    },
-    {
-      "name": {
-        "common": "Russia",
-        "official": "Russian Federation",
-        "nativeName": {
-          "rus": {"official": "Российская Федерация", "common": "Россия"}
-        }
-      },
-      "flag": "🇷🇺",
-      "continents": ["Europe", "Asia"],
-    }
-  ];
   String expanded = "";
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
+    getData();
+  }
+
+  Future<void> getData() async {
+    final response = await http.get(Uri.parse('https://restcountries.com/v3.1/all')); // Replace with your API URL
+    if (response.statusCode == 200) {
+      List<dynamic> data = json.decode(response.body);
+      processResponse(data);
+    } else {
+      throw Exception('Failed to load data');
+    }
+  }
+
+  void processResponse(List<dynamic> data) {
     var continentList = [];
-    for (Map<String, dynamic> data in dummyData) {
-      var continents = data['continents'];
+    for (Map<String, dynamic> item in data) {
+      var continents = item['continents'];
       if (!continentList.any((e) => continents.contains(e))) {
         continentList.addAll(continents);
       }
     }
 
-    for (String data in continentList) {
-      List<Map<String, dynamic>> d = dummyData
-          .where((value) => value['continents'].contains(data))
+    for (String continent in continentList) {
+      List<dynamic> continentCountries = data
+          .where((value) => value['continents'].contains(continent))
           .toList();
       List<Map<String, dynamic>> countries = [];
-      for (Map<String, dynamic> map in d) {
+      for (Map<String, dynamic> map in continentCountries) {
         countries.add({
           'country': map['name']['official'],
           'flag': map['flag'],
         });
       }
-      mapData.addAll({data: countries});
+      mapData[continent] = countries;
     }
+    setState(() {
+      isLoading = false;
+    });
   }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 8.0,right: 10,left: 10),
+    return  Scaffold(
+      appBar: AppBar(),
+      body: isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : Padding(
+        padding: const EdgeInsets.only(top: 8.0,  left: 5),
+        child: SingleChildScrollView(
           child: Column(
             children: [
               ExpansionPanelList(
@@ -100,13 +79,16 @@ class _MyAppState extends State<MyApp> {
                       (e) {
                     var key = e;
                     var countries = mapData[key];
-
+          
                     return ExpansionPanel(
                       isExpanded: key == expanded,
                       headerBuilder: (_, expanded) {
                         return Padding(
-                          padding: const EdgeInsets.only(left: 10,top: 5),
-                          child: Text(key,style: const TextStyle(fontSize: 20,fontWeight: FontWeight.w600),),
+                          padding: const EdgeInsets.only(left: 10, top: 5),
+                          child: Text(
+                            key,
+                            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                          ),
                         );
                       },
                       body: Padding(
@@ -130,13 +112,14 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     );
-                      },
+                  },
                 ).toList(),
+              ),
+            ],
           ),
-          ]
-                ),
         ),
-    ),
+      ),
+
     );
   }
 }

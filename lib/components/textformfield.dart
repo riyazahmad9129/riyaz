@@ -11,19 +11,21 @@ class MyTextField extends StatelessWidget {
   final bool isObscure;
   final Widget? suffixWidget;
   final int? maxLines;
+  final  initialValue;
   const MyTextField(
-      {super.key, this.isObscure = false, this.hintText, this.borderRadius, this.fillColor, this.controller, this.validator, this.inputType, this.suffixWidget, this.maxLines});
+      {super.key, this.isObscure = false, this.hintText, this.borderRadius, this.fillColor, this.controller, this.validator, this.inputType, this.suffixWidget, this.maxLines, this.initialValue});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 45,
+    return SizedBox(
+      height: 55,
       child: Padding(
         padding: const EdgeInsets.only(top: 1.0),
         child: TextFormField(
+          initialValue: initialValue,
           obscureText: isObscure,
           controller: controller,
-          textInputAction: TextInputAction.next,
+          // textInputAction: TextInputAction.next,
           keyboardType: inputType,
           validator: validator,
           autovalidateMode: AutovalidateMode.onUserInteraction,

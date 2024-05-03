@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
+class Test2 extends StatefulWidget {
+  const Test2({super.key});
+
+  @override
+  State<Test2> createState() => _Test2State();
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
+class _Test2State extends State<Test2> {
   Map<String, dynamic> mapData = {};
   List<Map<String, dynamic>> dummyData = [
     {
@@ -77,16 +74,13 @@ class _MyAppState extends State<MyApp> {
       mapData.addAll({data: countries});
     }
   }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 8.0,right: 10,left: 10),
-          child: Column(
+    return  Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 8.0,right: 10,left: 10),
+        child: Column(
             children: [
               ExpansionPanelList(
                 materialGapSize: 5,
@@ -130,13 +124,12 @@ class _MyAppState extends State<MyApp> {
                         ),
                       ),
                     );
-                      },
+                  },
                 ).toList(),
-          ),
-          ]
-                ),
+              ),
+            ]
         ),
-    ),
+      ),
     );
   }
 }
