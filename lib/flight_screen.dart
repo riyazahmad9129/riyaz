@@ -161,7 +161,7 @@ class _BookingScreenState extends State<BookingScreen> {
                               ),
                               Gap(vertical: 20.h),
                               Container(
-                                height: 315.h,
+                                height: 300.h,
                                 width: 500.w,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5.r),

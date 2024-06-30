@@ -421,7 +421,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                Gap(horizontal: 70.w),
+                                Gap(horizontal: 80.w),
                                 Text(
                                   DateFormat.MMMd().format(DateTime(2024, 5, 22)),
                                   style: const TextStyle(
@@ -555,14 +555,14 @@ class _HomeScreenState extends State<HomeScreen> {
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Container(
-                        height: 230.h,
+                        height: 200.h,
                         width: 380.w,
                         color: Colors.white,
                         child: ScrollLoopAutoScroll(
                           duplicateChild: 1,
                           scrollDirection: Axis.horizontal,
-                          duration: const Duration(seconds: 30),
-                          delay: const Duration(seconds: 5),
+                          duration: const Duration(seconds: 25),
+                          delay: const Duration(seconds: 3),
                           child: Row(
                             children: [
                               Gap(vertical: 5.h),
@@ -586,24 +586,24 @@ class _HomeScreenState extends State<HomeScreen> {
                               Gap(vertical: 5.h),
                               Image.asset(
                                 "lib/assets/visit3.jpeg",
+                                height: 199.h,
+                                width: 300.w,
+                              ),
+                              Gap(vertical: 5.h),
+                              Image.asset(
+                                "lib/assets/visit.jpg",
                                 height: 200.h,
                                 width: 300.w,
                               ),
                               Gap(vertical: 5.h),
                               Image.asset(
-                                "lib/assets/visit4.jpg",
+                                "lib/assets/visit2.jpg",
                                 height: 200.h,
                                 width: 300.w,
                               ),
                               Gap(vertical: 5.h),
                               Image.asset(
-                                "lib/assets/visit5.jpg",
-                                height: 200.h,
-                                width: 300.w,
-                              ),
-                              Gap(vertical: 5.h),
-                              Image.asset(
-                                "lib/assets/visit6.jpg",
+                                "lib/assets/visit3.jpg",
                                 height: 200.h,
                                 width: 300.w,
                               ),

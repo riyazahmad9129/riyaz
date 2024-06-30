@@ -216,7 +216,7 @@ class _Booking2ScreenState extends State<Booking2Screen> {
                                           },
                                           child: Container(
                                             width: 305.w,
-                                            height: 40.h,
+                                            height: 42.h,
                                             padding: EdgeInsets.all(15.w),
                                             decoration: BoxDecoration(
                                               color: const Color(0xFFe0edf6),
@@ -245,7 +245,7 @@ class _Booking2ScreenState extends State<Booking2Screen> {
                                           },
                                           child: Container(
                                             width: 305.w,
-                                            height: 40.h,
+                                            height: 42.h,
                                             padding: EdgeInsets.all(15.w),
                                             decoration: BoxDecoration(
                                               color: const Color(0xFFe0edf6),
