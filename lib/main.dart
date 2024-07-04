@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:untitled/api.dart';
 import 'package:untitled/components/destination.dart';
 import 'package:untitled/components/image_con.dart';
+import 'package:untitled/country_1.dart';
 import 'package:untitled/date.dart';
 import 'package:untitled/destination.dart';
 import 'package:untitled/flight_screen.dart';
@@ -17,6 +18,7 @@ import 'package:untitled/test.dart';
 import 'package:untitled/test2.dart';
 
 import 'flight2.dart';
+import 'hamza.dart';
 
 void main() {
   runApp(const MyApp());
@@ -35,13 +37,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       splitScreenMode: true,
-      designSize: Size(360, 690),
+      designSize: const Size(360, 690),
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: HomeScreen(),
+        home: const Country1(),
       ),
     );
   }
